@@ -9,3 +9,6 @@ class User(models.Model):
         CLIENT = "CL", _('Client')
 
     avatar = models.ImageField(null=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
