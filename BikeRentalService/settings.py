@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'bike.apps.BikeConfig'
+    'bike.apps.BikeConfig',
+
+    'rest_framework',
 ]
 
 AUTH_USER_MODEL = 'bike.User'
