@@ -1,0 +1,18 @@
+from django.forms import ModelForm
+from django.contrib.auth.forms import UserCreationForm
+from .models import User, Bike
+
+class MyUserCreationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['name', 'username', 'email', 'password1', 'password2']
+
+class BikeForm(ModelForm):
+    class Meta:
+        model = Bike
+        fields = '__all__'
+
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['avatar', 'name', 'username', 'email', 'bio']
