@@ -1,6 +1,6 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 
@@ -40,7 +40,12 @@ class Bike(models.Model):
 class Rating(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     bike = models.ForeignKey(Bike, on_delete=models.SET_NULL, null=True)
-    rate = models.FloatField(max_length=5, null=False)
+    rate = models.FloatField(
+        # default=5,
+        validators=[
+            MaxValueValidator(5),
+            MinValueValidator(1)
+        ])
 
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -55,6 +60,9 @@ class Reservation(models.Model):
     host = models.ForeignKey(User, on_delete=models.CASCADE)
     bike_model = models.ForeignKey(Bike, on_delete=models.SET_NULL, null=True)
     amount = models.IntegerField(null=False)
+
+    start_date = models.DateTimeField(auto_now=False, auto_now_add=False)
+    end_date = models.DateTimeField(auto_now=False, auto_now_add=False)
 
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
