@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bikes Rental Service</title>
+</head>
+<body>
+    <h1>Bikes Rental Service</h1>
+    <div id="bikes-container"></div>
+</body>
+
+<script>
+    let bikesContainer = document.getElementById('bikes-container')
+
+    let getBikes = async () => {
+        let response = await fetch('http://localhost:8000/api/bikes/')
+        let bikes = await response.json()
+        for(let i=0; bikes.length > i; i++){
+            let bike = bikes[i]
+            let row = `
+                <div>
+                    <h3>${bike.model}</h3>
+                </div>
+            `
+            bikesContainer.innerHTML += row
+        }
+    }
+
+    getBikes()
+
+</script>
+
+</html>
