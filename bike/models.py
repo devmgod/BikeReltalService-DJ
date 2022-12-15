@@ -61,8 +61,8 @@ class Reservation(models.Model):
     bike_model = models.ForeignKey(Bike, on_delete=models.SET_NULL, null=True)
     amount = models.IntegerField(null=False)
 
-    start_date = models.DateTimeField(auto_now=False, auto_now_add=False)
-    end_date = models.DateTimeField(auto_now=False, auto_now_add=False)
+    start_date = models.DateField(auto_now=False, auto_now_add=False)
+    end_date = models.DateField(auto_now=False, auto_now_add=False)
 
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)

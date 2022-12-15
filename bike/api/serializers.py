@@ -4,4 +4,4 @@ from bike.models import Bike
 class BikeSerializer(ModelSerializer):
     class Meta:
         model = Bike
-        fields = '__all__'
+        fields = ['model', 'color', 'location', 'status', 'amount']
