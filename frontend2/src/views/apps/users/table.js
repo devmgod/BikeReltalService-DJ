@@ -9,8 +9,9 @@ const TableBasic = () => {
   const [users, setUsers] = useState([])
 
   useEffect(async () => {
-    await axios.get(`${process.env.REACT_APP_BACKEND}/api/users`)
+    await axios.get(`http://localhost:8000/api/users`)
       .then((response) => {
+        console.log('-------------', response.data)
         setUsers(response.data)
       })
   }, [])
@@ -28,9 +29,9 @@ const TableBasic = () => {
       </thead>
       <tbody>
         {
-          users.map((user, index) => (
-            <tr key={index}>
-              <td>{index}</td>
+          users.map((user, idx) => (
+            <tr key={idx}>
+              <td>{idx + 1}</td>
               <td>{user.avatar}</td>
               <td>{user.username}</td>
               <td>{user.email}</td>

@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from bike.models import Bike
-from .serializers import BikeSerializer
+from bike.models import Bike, User, Role, Rating, Reservation
+from .serializers import BikeSerializer, UserSerializer
 
 @api_view(['GET'])
 def getRoutes(request):
@@ -23,4 +23,16 @@ def getBikes(request):
 def getBike(request, pk):
     bike = Bike.objects.get(id=pk)
     serializer = BikeSerializer(bike)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getUsers(request):
+    users = User.objects.all()
+    serializer = UserSerializer(users, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getUser(request, pk):
+    user = User.objects.get(id=pk)
+    serializer = UserSerializer(user)
     return Response(serializer.data)

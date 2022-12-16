@@ -5,4 +5,6 @@ urlpatterns = [
     path('', views.getRoutes),
     path('bikes/', views.getBikes),
     path('bikes/<str:pk>', views.getBike),
+    path('users/', views.getUsers),
+    path('users/<str:pk>', views.getUser),
 ]
