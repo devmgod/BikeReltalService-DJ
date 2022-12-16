@@ -1,9 +1,9 @@
-const Strategy = () => {
+const Reservation = () => {
     return (
-        <h1>
-            Robot Favorites List
+        <h1 className="display-4">
+            Reservation
         </h1>
     )
 }
 
-export default Strategy
+export default Reservation

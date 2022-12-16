@@ -5,7 +5,9 @@ import { Navigate } from 'react-router-dom'
 const Users = lazy(() => import('../../views/apps/users'))
 const Bikes = lazy(() => import('../../views/apps/bikes'))
 const Reservation = lazy(() => import('../../views/apps/reservation'))
-const Buyers = lazy(() => import('../../views/apps/apimanagement'))
+const Buyers = lazy(() => import('../../views/apps/buyer'))
+
+
 const Invite = lazy(() => import('../../views/apps/invite'))
 const Earning = lazy(() => import('../../views/apps/earning'))
 
@@ -35,19 +37,19 @@ const Permissions = lazy(() => import('../../views/apps/roles-permissions/permis
 const AppRoutes = [
   {
     element: <Users />,
-    path: '/apps/strategy'
+    path: '/apps/users'
   },
   {
-    path: '/apps/robot',
+    path: '/apps/bikes',
     element: <Bikes />
   },
   {
     element: <Reservation />,
-    path: '/apps/robotlist'
+    path: '/apps/reservation'
   },
   {
     element: <Buyers />,
-    path: '/apps/apimanagement'
+    path: '/apps/buyers'
   },
   {
     element: <Invite />,
