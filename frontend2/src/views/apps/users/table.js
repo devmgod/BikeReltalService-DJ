@@ -1,7 +1,9 @@
 // ** Custom Components
-import { Table } from 'reactstrap'
+import { Table, Button, Badge } from 'reactstrap'
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
+
+import './style.scss'
 
 
 const TableBasic = () => {
@@ -11,7 +13,7 @@ const TableBasic = () => {
   useEffect(async () => {
     await axios.get(`http://localhost:8000/api/users`)
       .then((response) => {
-        console.log('-------------', response.data)
+        // console.log('-------------', response.data)
         setUsers(response.data)
       })
   }, [])
@@ -36,9 +38,9 @@ const TableBasic = () => {
               <td>{user.username}</td>
               <td>{user.email}</td>
               <td>{user.date_joined}</td>
-              <td>
-                <button>Edit</button>
-                <button>Delete</button>
+              <td className='space'>
+                <Badge color='info' className='button'>Edit</Badge>
+                <Badge color='danger' className='button'>Delete</Badge>
               </td>
             </tr>
           ))

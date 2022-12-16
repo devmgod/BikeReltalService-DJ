@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Bike
+from bike.models import User, Role, Rating, Reservation, Bike
 
 class MyUserCreationForm(UserCreationForm):
     class Meta:

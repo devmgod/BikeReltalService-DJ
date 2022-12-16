@@ -1,4 +1,12 @@
-#strategy {
-    display: block;
-    margin-bottom: 40px;
+.space-between {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+.space {
+    display: flex;
+    justify-content: space-evenly;
+    .button {
+        cursor: pointer;
+    }
 }

@@ -7,4 +7,5 @@ urlpatterns = [
     path('bikes/<str:pk>', views.getBike),
     path('users/', views.getUsers),
     path('users/<str:pk>', views.getUser),
+    path('get-user-form/', views.getUserForm)
 ]
