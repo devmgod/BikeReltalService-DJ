@@ -39,12 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'bike.apps.BikeConfig',
+    # 'base.apps.BaseConfig',
 
     'rest_framework',
     'corsheaders',
 ]
 
 AUTH_USER_MODEL = 'bike.User'
+# AUTH_USER_MODEL = 'base.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

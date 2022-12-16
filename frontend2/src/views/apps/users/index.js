@@ -12,6 +12,10 @@ const Users = () => {
   const [userform, setUserform] = useState('')
   const [canvasPlacement, setCanvasPlacement] = useState('end')
   const [canvasOpen, setCanvasOpen] = useState(false)
+  const [name, setName] = useState('')
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const toggleCanvasEnd = async () => {
     await axios.get(`http://localhost:8000/api/get-user-form/`)
@@ -26,9 +30,15 @@ const Users = () => {
     setCanvasOpen(!canvasOpen)
   }
 
-  const createUser = () => {
-    console.log('create')
+  const createUser = async () => {
+    await axios.post(`http://localhost:8000/api/create-user/`, [name, username, email, password])
+    .then((response) => {
+      console.log(response)
+    }).catch((error) => {
+      console.log(error)
+    })
   }
+
   return (
     <div>
       <div className="space-between">
@@ -64,13 +74,13 @@ const Users = () => {
                   <Label className='form-label' for='basicInput'>
                     Name
                   </Label>
-                  <Input type='text' id='basicInput' placeholder='Enter Name' />
+                  <Input type='text' onChange={e => setName(e.target.value)} id='basicInput' placeholder='Enter Name' />
                 </Col>
                 <Col className='mb-1' sm='12'>
                   <Label className='form-label' for='basicInput'>
                     Username
                   </Label>
-                  <Input type='text' id='basicInput' placeholder='Enter Username' />
+                  <Input type='text' onChange={e => setUsername(e.target.value)} id='basicInput' placeholder='Enter Username' />
                 </Col>
                 <Col className='mb-1'>
                   <Label className='form-label' for='InputHelp'>
@@ -79,13 +89,13 @@ const Users = () => {
                   <small className='text-muted'>
                     eg. <i>someone@example.com</i>
                   </small>
-                  <Input type='email' id='InputHelp' />
+                  <Input type='email' onChange={e => setEmail(e.target.value)} id='InputHelp' />
                 </Col>
                 <Col className='mb-1'>
                   <Label className='form-label' for='InputHelp'>
                     Password
                   </Label>{' '}<br />
-                  <Input type='password' id='InputHelp' />
+                  <Input type='password' onChange={e => setPassword(e.target.value)} id='InputHelp' />
                 </Col>
                 <div className="space">
                   <Button.Ripple color='primary' onClick={() => createUser()} outline>Create</Button.Ripple>

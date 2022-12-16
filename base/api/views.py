@@ -1,8 +1,8 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from bike.models import Bike, User
+from base.models import Bike, User, Role, Rating, Reservation
 from .serializers import BikeSerializer, UserSerializer
-from bike.forms import MyUserCreationForm
+from base.forms import MyUserCreationForm
 
 @api_view(['GET'])
 def getRoutes(request):
